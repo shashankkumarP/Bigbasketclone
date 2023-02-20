@@ -4,7 +4,7 @@ import { getcart } from "../../pages/cart/Cart_action"
 
 export const fetchData = (filter) => (dispatch) => {
     dispatch({ type: GET_PRODUCT_LOADING })
-    axios.get(`http://localhost:8080/product?sort_by=${filter}`)
+    axios.get(`https://sore-pear-armadillo-shoe.cyclic.app/product?sort_by=${filter}`)
             .then((r) => { dispatch({ type: GET_PRODUCT_SUCCESS, payload: r.data }) })
             .catch(() => dispatch({ type: GET_PRODUCT_ERROR }));
    
@@ -15,7 +15,7 @@ export const fetchData = (filter) => (dispatch) => {
 
 export const addtoCart = (el,userid) => async(dispatch) => {
     console.log(userid,"userid");
-    await axios.post(`http://localhost:8080/cart/product/${userid}`,{
+    await axios.post(`https://sore-pear-armadillo-shoe.cyclic.app/cart/product/${userid}`,{
         
         product_id:el._id,
         Title:el.Title,
@@ -38,7 +38,7 @@ export const addtoCart = (el,userid) => async(dispatch) => {
 
 
 export const updateQty = (count,id) => (dispatch) => {
-    axios.patch(`http://localhost:8080/cart/${id}`,count)
+    axios.patch(`https://sore-pear-armadillo-shoe.cyclic.app/cart/${id}`,count)
         .then((r) => {
             console.log(r.data)
             })
